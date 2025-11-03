@@ -6,6 +6,7 @@ library(stringr)
 library(lubridate)
 library(here)
 library(DT)
+library(RCurl)
 
 # source(here("set_variables.R"))
 # source(here("data_processing.R"))
