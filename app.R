@@ -27,21 +27,21 @@ library(DT)
 
 # Read xlsx from URL ----
 
-# f <-
-#   "http://statistics.gov.scot/downloads/file?id=ca23e4da-4aa2-49e7-96e2-38f227f9d0de%2FALL+NPF+INDICATORS+-+2024+-+statistics.gov.scot+NPF+database+excel+file+-+August+2024.xlsx"
-# 
-# NPFdata <-
-#   openxlsx::read.xlsx(f,
-#                       detectDates = TRUE,
-#                       na.strings=c("","NA")) %>%
-#   filter(Characteristic == "Age" & Outcome == "Poverty")
+f <-
+  "http://statistics.gov.scot/downloads/file?id=ca23e4da-4aa2-49e7-96e2-38f227f9d0de%2FALL+NPF+INDICATORS+-+2024+-+statistics.gov.scot+NPF+database+excel+file+-+August+2024.xlsx"
+
+NPFdata <-
+  openxlsx::read.xlsx(URLdecode(f),
+                      detectDates = TRUE,
+                      na.strings=c("","NA")) %>%
+  filter(Characteristic == "Age" & Outcome == "Poverty")
 
 
 # Read csv from URL ----
 
-x <- readr::read_csv(
-  "https://datahub.io/core/country-list/r/data.csv"
-)
+# x <- readr::read_csv(
+#   "https://datahub.io/core/country-list/r/data.csv"
+# )
 
 
 # App ----
@@ -50,7 +50,7 @@ ui <- fluidPage(
   
   titlePanel("Equality test"),
   
-  datatable(x)
+  datatable(NPFdata)
   
 )
 
