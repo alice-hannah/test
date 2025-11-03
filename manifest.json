@@ -1097,40 +1097,6 @@
         "Archs": "x64"
       }
     },
-    "openxlsx": {
-      "Source": "CRAN",
-      "Repository": "file://s1428a/R_Packages/R_4_4_2_Packages",
-      "description": {
-        "Type": "Package",
-        "Package": "openxlsx",
-        "Title": "Read, Write and Edit xlsx Files",
-        "Version": "4.2.7.1",
-        "Date": "2024-09-19",
-        "Authors@R": "\n    c(person(given = \"Philipp\",\n             family = \"Schauberger\",\n             role = \"aut\",\n             email = \"philipp@schauberger.co.at\"),\n      person(given = \"Alexander\",\n             family = \"Walker\",\n             role = \"aut\",\n             email = \"Alexander.Walker1989@gmail.com\"),\n      person(given = \"Luca\",\n             family = \"Braglia\",\n             role = \"ctb\"),\n      person(given = \"Joshua\",\n             family = \"Sturm\",\n             role = \"ctb\"),\n      person(given = \"Jan Marvin\",\n             family = \"Garbuszus\",\n             role = c(\"ctb\", \"cre\"),\n             email = \"jan.garbuszus@ruhr-uni-bochum.de\"),\n      person(given = \"Jordan Mark\",\n             family = \"Barbone\",\n             role = \"ctb\",\n             email = \"jmbarbone@gmail.com\",\n             comment = c(ORCID = \"0000-0001-9788-3628\")),\n      person(given = \"David\",\n             family = \"Zimmermann\",\n             role = \"ctb\",\n             email = \"david_j_zimmermann@hotmail.com\"),\n      person(given = \"Reinhold\",\n             family = \"Kainhofer\",\n             role = \"ctb\",\n             email = \"reinhold@kainhofer.com\"))",
-        "Description": "Simplifies the creation of Excel .xlsx files by providing a\n    high level interface to writing, styling and editing worksheets.\n    Through the use of 'Rcpp', read/write times are comparable to the\n    'xlsx' and 'XLConnect' packages with the added benefit of removing the\n    dependency on Java.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://ycphs.github.io/openxlsx/index.html,\nhttps://github.com/ycphs/openxlsx",
-        "BugReports": "https://github.com/ycphs/openxlsx/issues",
-        "Depends": "R (>= 3.3.0)",
-        "Imports": "grDevices, methods, Rcpp, stats, stringi, utils, zip",
-        "Suggests": "curl, formula.tools, knitr, rmarkdown, testthat",
-        "LinkingTo": "Rcpp",
-        "VignetteBuilder": "knitr",
-        "Encoding": "UTF-8",
-        "Language": "en-US",
-        "RoxygenNote": "7.3.2",
-        "Collate": "'CommentClass.R' 'HyperlinkClass.R' 'RcppExports.R'\n'class_definitions.R' 'StyleClass.R' 'WorkbookClass.R'\n'asserts.R' 'baseXML.R' 'borderFunctions.R' 'build_workbook.R'\n'chartsheet_class.R' 'conditional_formatting.R'\n'data-fontSizeLookupTables.R' 'helperFunctions.R'\n'loadWorkbook.R' 'onUnload.R' 'openXL.R' 'openxlsx-package.R'\n'openxlsx.R' 'openxlsxCoerce.R' 'readWorkbook.R'\n'setWindowSize.R' 'sheet_data_class.R' 'utils.R'\n'workbook_column_widths.R' 'workbook_read_workbook.R'\n'workbook_write_data.R' 'worksheet_class.R' 'wrappers.R'\n'writeData.R' 'writeDataTable.R' 'writexlsx.R' 'zzz.R'",
-        "LazyData": "true",
-        "NeedsCompilation": "yes",
-        "Packaged": "2024-09-18 22:29:51 UTC; janmarvingarbuszus",
-        "Author": "Philipp Schauberger [aut],\n  Alexander Walker [aut],\n  Luca Braglia [ctb],\n  Joshua Sturm [ctb],\n  Jan Marvin Garbuszus [ctb, cre],\n  Jordan Mark Barbone [ctb] (<https://orcid.org/0000-0001-9788-3628>),\n  David Zimmermann [ctb],\n  Reinhold Kainhofer [ctb]",
-        "Maintainer": "Jan Marvin Garbuszus <jan.garbuszus@ruhr-uni-bochum.de>",
-        "Repository": "CRAN",
-        "Date/Publication": "2024-09-20 12:50:02 UTC",
-        "Built": "R 4.4.2; x86_64-w64-mingw32; 2024-12-08 02:15:52 UTC; windows",
-        "Archs": "x64"
-      }
-    },
     "pillar": {
       "Source": "CRAN",
       "Repository": "file://s1428a/R_Packages/R_4_4_2_Packages",
@@ -1769,38 +1735,11 @@
         "Built": "R 4.4.1; x86_64-w64-mingw32; 2024-10-05 00:28:46 UTC; windows",
         "Archs": "x64"
       }
-    },
-    "zip": {
-      "Source": "CRAN",
-      "Repository": "file://s1428a/R_Packages/R_4_4_2_Packages",
-      "description": {
-        "Package": "zip",
-        "Title": "Cross-Platform 'zip' Compression",
-        "Version": "2.3.1",
-        "Authors@R": "c(\n    person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")),\n    person(\"Kuba\", \"Podgórski\", role = \"ctb\"),\n    person(\"Rich\", \"Geldreich\", role = \"ctb\"),\n    person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"))\n  )",
-        "Description": "Cross-Platform 'zip' Compression Library. A replacement for\n    the 'zip' function, that does not require any additional external\n    tools on any platform.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://github.com/r-lib/zip, https://r-lib.github.io/zip/",
-        "BugReports": "https://github.com/r-lib/zip/issues",
-        "Suggests": "covr, processx, R6, testthat, withr",
-        "Config/Needs/website": "tidyverse/tidytemplate",
-        "Config/testthat/edition": "3",
-        "Encoding": "UTF-8",
-        "RoxygenNote": "7.2.3",
-        "NeedsCompilation": "yes",
-        "Packaged": "2024-01-27 09:28:29 UTC; gaborcsardi",
-        "Author": "Gábor Csárdi [aut, cre],\n  Kuba Podgórski [ctb],\n  Rich Geldreich [ctb],\n  Posit Software, PBC [cph, fnd]",
-        "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
-        "Repository": "CRAN",
-        "Date/Publication": "2024-01-27 10:00:02 UTC",
-        "Built": "R 4.4.2; x86_64-w64-mingw32; 2024-12-08 01:29:30 UTC; windows",
-        "Archs": "x64"
-      }
     }
   },
   "files": {
     "app.R": {
-      "checksum": "384b3b1286c618c81dec706c63c7e4c2"
+      "checksum": "a9400813fdb095c06bf4984f0ff12515"
     }
   },
   "users": null

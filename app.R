@@ -7,39 +7,33 @@ library(lubridate)
 library(here)
 library(DT)
 
-# SPARQL ----
+query <- "
+  SELECT  ?LastUpdated ?DownloadURL
+  WHERE {
+  <http://statistics.gov.scot/data/national-performance-framework>
+  <http://purl.org/dc/terms/modified> ?LastUpdated ;
+  <http://publishmydata.com/def/dataset#downloadURL> ?DownloadURL.
+  }"
 
-# query <- "
-#   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-#   SELECT  ?LastUpdated ?DownloadURL
-#   WHERE {
-#   <http://statistics.gov.scot/data/national-performance-framework>
-#   <http://purl.org/dc/terms/modified> ?LastUpdated ;
-#   <http://publishmydata.com/def/dataset#downloadURL> ?DownloadURL.
-#   }"
-# 
-# npfMetaData <- 
-#   tryCatch(
-#     SPARQL("http://statistics.gov.scot/sparql", query)$results,
-#     error = function(e) data.frame(x = 1:2, y = 3:4)
-#   )
+npfMetaData <-
+  SPARQL("http://statistics.gov.scot/sparql", query)$results
 
 
 # Read xlsx from URL ----
 
-f <-
-  "https://statistics.gov.scot/downloads/file?id=ca23e4da-4aa2-49e7-96e2-38f227f9d0de%2FALL+NPF+INDICATORS+-+2024+-+statistics.gov.scot+NPF+database+excel+file+-+August+2024.xlsx"
-
-NPFdata <-
-  openxlsx::read.xlsx(f,
-                      detectDates = TRUE,
-                      na.strings=c("","NA")) %>%
-  filter(Characteristic == "Age" & Outcome == "Poverty")
+# f <-
+#   "https://statistics.gov.scot/downloads/file?id=ca23e4da-4aa2-49e7-96e2-38f227f9d0de%2FALL+NPF+INDICATORS+-+2024+-+statistics.gov.scot+NPF+database+excel+file+-+August+2024.xlsx"
+# 
+# NPFdata <-
+#   openxlsx::read.xlsx(f,
+#                       detectDates = TRUE,
+#                       na.strings=c("","NA")) %>%
+#   filter(Characteristic == "Age" & Outcome == "Poverty")
 
 # g <-
 #   "https://www.opendata.nhs.scot/dataset/4ace86c2-2c0f-4620-b544-932148c2c4d3/resource/530cb70a-f747-4b3b-b75a-06353ae78e8d/download/icd10-lookup.xlsx"
 # 
-# x <- 
+# x <-
 #   openxlsx::read.xlsx(g)
 
 # Read csv from URL ----
@@ -55,7 +49,7 @@ ui <- fluidPage(
   
   titlePanel("Equality test"),
   
-  datatable(NPFdata)
+  datatable(npfMetaData)
   
 )
 
