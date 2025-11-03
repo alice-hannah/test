@@ -11,16 +11,16 @@ library(DT)
 # source(here("data_processing.R"))
 # source(here("readNPFdata.R"))
 
-# query <- "
-#   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-#   SELECT  ?LastUpdated ?DownloadURL
-#   WHERE {
-#   <http://statistics.gov.scot/data/national-performance-framework>
-#   <http://purl.org/dc/terms/modified> ?LastUpdated ;
-#   <http://publishmydata.com/def/dataset#downloadURL> ?DownloadURL.
-#   }"
-# 
-# npfMetaData <- SPARQL("http://statistics.gov.scot/sparql", query)$results
+query <- "
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  SELECT  ?LastUpdated ?DownloadURL
+  WHERE {
+  <http://statistics.gov.scot/data/national-performance-framework>
+  <http://purl.org/dc/terms/modified> ?LastUpdated ;
+  <http://publishmydata.com/def/dataset#downloadURL> ?DownloadURL.
+  }"
+
+npfMetaData <- SPARQL("http://statistics.gov.scot/sparql", query)$results
 
 
 # url <- 
@@ -32,13 +32,6 @@ library(DT)
 #                       na.strings=c("","NA")) %>%
 #   filter(Characteristic == "Age" & Outcome == "Poverty")
 
-# Test xlsx download ----
-
-x <- 
-  readr::read_csv(
-    "https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&export=download"
-  )
-
 
 # App ----
 
@@ -49,7 +42,7 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel = NULL,
     mainPanel = mainPanel(
-      datatable(x)
+      datatable(npfMetaData)
     )
   )
   
