@@ -8,6 +8,9 @@ library(here)
 library(DT)
 library(RCurl)
 
+options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
+
+
 # source(here("set_variables.R"))
 # source(here("data_processing.R"))
 # source(here("readNPFdata.R"))
