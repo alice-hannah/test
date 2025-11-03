@@ -23,7 +23,7 @@ query <- "
 npfMetaData <- 
   tryCatch(
     SPARQL("http://statistics.gov.scot/sparql", query)$results,
-    error = function(e) "x"
+    error = function(e) data.frame(x = 1:2, y = 3:4)
   )
 
 
