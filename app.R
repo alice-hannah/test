@@ -1,51 +1,66 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    https://shiny.posit.co/
-#
 
 library(shiny)
+library(dplyr)
+library(SPARQL)
+library(stringr)
+library(lubridate)
+library(here)
+library(DT)
 
-# Define UI for application that draws a histogram
+# source(here("set_variables.R"))
+# source(here("data_processing.R"))
+# source(here("readNPFdata.R"))
+
+# query <- "
+#   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+#   SELECT  ?LastUpdated ?DownloadURL
+#   WHERE {
+#   <http://statistics.gov.scot/data/national-performance-framework>
+#   <http://purl.org/dc/terms/modified> ?LastUpdated ;
+#   <http://publishmydata.com/def/dataset#downloadURL> ?DownloadURL.
+#   }"
+# 
+# npfMetaData <- SPARQL("http://statistics.gov.scot/sparql", query)$results
+
+
+# url <- 
+#   "http://statistics.gov.scot/downloads/file?id=ca23e4da-4aa2-49e7-96e2-38f227f9d0de%2FALL+NPF+INDICATORS+-+2024+-+statistics.gov.scot+NPF+database+excel+file+-+August+2024.xlsx"
+# 
+# NPFdata <-
+#   openxlsx::read.xlsx(url, 
+#                       detectDates = TRUE, 
+#                       na.strings=c("","NA")) %>%
+#   filter(Characteristic == "Age" & Outcome == "Poverty")
+
+# Test xlsx download ----
+
+x <- 
+  readr::read_csv(
+    "https://drive.google.com/uc?id=1zO8ekHWx9U7mrbx_0Hoxxu6od7uxJqWw&export=download"
+  )
+
+
+# App ----
+
 ui <- fluidPage(
-
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins 
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-           plotOutput("distPlot")
-        )
+  
+  titlePanel("Equality test"),
+  
+  sidebarLayout(
+    sidebarPanel = NULL,
+    mainPanel = mainPanel(
+      datatable(x)
     )
+  )
+  
 )
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
-
-    output$distPlot <- renderPlot({
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white',
-             xlab = 'Waiting time to next eruption (in mins)',
-             main = 'Histogram of waiting times')
-    })
+  
+  # output$table <- renderDT({
+  # 
+  # })
 }
 
-# Run the application 
 shinyApp(ui = ui, server = server)
