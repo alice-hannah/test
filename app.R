@@ -7,24 +7,31 @@ library(lubridate)
 library(here)
 library(DT)
 
+x <- opendatascot::ods_all_datasets()
+
+y <- opendatascot::ods_dataset("age-at-first-birth", 
+                               refPeriod = "2016/17-2018/19",
+                               age = "all") %>%
+  slice_head(n = 500)
+
 # source(here("set_variables.R"))
 # source(here("data_processing.R"))
 # source(here("readNPFdata.R"))
 
-query <- "
-  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  SELECT  ?LastUpdated ?DownloadURL
-  WHERE {
-  <http://statistics.gov.scot/data/national-performance-framework>
-  <http://purl.org/dc/terms/modified> ?LastUpdated ;
-  <http://publishmydata.com/def/dataset#downloadURL> ?DownloadURL.
-  }"
-
-npfMetaData <- 
-  tryCatch(
-    SPARQL("http://statistics.gov.scot/sparql", query)$results,
-    error = function(e) data.frame(x = 1:2, y = 3:4)
-  )
+# query <- "
+#   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+#   SELECT  ?LastUpdated ?DownloadURL
+#   WHERE {
+#   <http://statistics.gov.scot/data/national-performance-framework>
+#   <http://purl.org/dc/terms/modified> ?LastUpdated ;
+#   <http://publishmydata.com/def/dataset#downloadURL> ?DownloadURL.
+#   }"
+# 
+# npfMetaData <- 
+#   tryCatch(
+#     SPARQL("http://statistics.gov.scot/sparql", query)$results,
+#     error = function(e) data.frame(x = 1:2, y = 3:4)
+#   )
 
 
 # url <- 
@@ -46,7 +53,7 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel = NULL,
     mainPanel = mainPanel(
-      datatable(npfMetaData)
+      datatable(y)
     )
   )
   
