@@ -7,17 +7,6 @@ library(lubridate)
 library(here)
 library(DT)
 
-x <- opendatascot::ods_all_datasets()
-
-y <- opendatascot::ods_dataset("age-at-first-birth", 
-                               refPeriod = "2016/17-2018/19",
-                               age = "all") %>%
-  slice_head(n = 500)
-
-# source(here("set_variables.R"))
-# source(here("data_processing.R"))
-# source(here("readNPFdata.R"))
-
 # query <- "
 #   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 #   SELECT  ?LastUpdated ?DownloadURL
@@ -34,14 +23,14 @@ y <- opendatascot::ods_dataset("age-at-first-birth",
 #   )
 
 
-# url <- 
-#   "http://statistics.gov.scot/downloads/file?id=ca23e4da-4aa2-49e7-96e2-38f227f9d0de%2FALL+NPF+INDICATORS+-+2024+-+statistics.gov.scot+NPF+database+excel+file+-+August+2024.xlsx"
-# 
-# NPFdata <-
-#   openxlsx::read.xlsx(url, 
-#                       detectDates = TRUE, 
-#                       na.strings=c("","NA")) %>%
-#   filter(Characteristic == "Age" & Outcome == "Poverty")
+url <-
+  "http://statistics.gov.scot/downloads/file?id=ca23e4da-4aa2-49e7-96e2-38f227f9d0de%2FALL+NPF+INDICATORS+-+2024+-+statistics.gov.scot+NPF+database+excel+file+-+August+2024.xlsx"
+
+NPFdata <-
+  openxlsx::read.xlsx(url,
+                      detectDates = TRUE,
+                      na.strings=c("","NA")) %>%
+  filter(Characteristic == "Age" & Outcome == "Poverty")
 
 
 # App ----
@@ -53,7 +42,7 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel = NULL,
     mainPanel = mainPanel(
-      datatable(y)
+      datatable(NPFdata)
     )
   )
   
