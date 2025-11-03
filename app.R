@@ -6,10 +6,6 @@ library(stringr)
 library(lubridate)
 library(here)
 library(DT)
-library(RCurl)
-
-options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
-
 
 # source(here("set_variables.R"))
 # source(here("data_processing.R"))
@@ -24,7 +20,11 @@ query <- "
   <http://publishmydata.com/def/dataset#downloadURL> ?DownloadURL.
   }"
 
-npfMetaData <- SPARQL("http://statistics.gov.scot/sparql", query)$results
+npfMetaData <- 
+  tryCatch(
+    SPARQL("http://statistics.gov.scot/sparql", query)$results,
+    error = "x"
+  )
 
 
 # url <- 
