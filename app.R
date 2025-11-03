@@ -28,19 +28,19 @@ library(DT)
 # Read xlsx from URL ----
 
 f <-
-  "http://statistics.gov.scot/downloads/file?id=ca23e4da-4aa2-49e7-96e2-38f227f9d0de%2FALL+NPF+INDICATORS+-+2024+-+statistics.gov.scot+NPF+database+excel+file+-+August+2024.xlsx"
+  "https://statistics.gov.scot/downloads/file?id=ca23e4da-4aa2-49e7-96e2-38f227f9d0de%2FALL+NPF+INDICATORS+-+2024+-+statistics.gov.scot+NPF+database+excel+file+-+August+2024.xlsx"
 
-# NPFdata <-
-#   openxlsx::read.xlsx(URLdecode(f),
-#                       detectDates = TRUE,
-#                       na.strings=c("","NA")) %>%
-#   filter(Characteristic == "Age" & Outcome == "Poverty")
+NPFdata <-
+  openxlsx::read.xlsx(f,
+                      detectDates = TRUE,
+                      na.strings=c("","NA")) %>%
+  filter(Characteristic == "Age" & Outcome == "Poverty")
 
-g <-
-  "https://www.opendata.nhs.scot/dataset/4ace86c2-2c0f-4620-b544-932148c2c4d3/resource/530cb70a-f747-4b3b-b75a-06353ae78e8d/download/icd10-lookup.xlsx"
-
-x <- 
-  openxlsx::read.xlsx(g)
+# g <-
+#   "https://www.opendata.nhs.scot/dataset/4ace86c2-2c0f-4620-b544-932148c2c4d3/resource/530cb70a-f747-4b3b-b75a-06353ae78e8d/download/icd10-lookup.xlsx"
+# 
+# x <- 
+#   openxlsx::read.xlsx(g)
 
 # Read csv from URL ----
 
@@ -55,7 +55,7 @@ ui <- fluidPage(
   
   titlePanel("Equality test"),
   
-  datatable(x)
+  datatable(NPFdata)
   
 )
 

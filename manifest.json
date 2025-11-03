@@ -1800,10 +1800,7 @@
   },
   "files": {
     "app.R": {
-      "checksum": "0a636e9ee58e2be110f4fa6eaa5196d4"
-    },
-    "data.xlsx": {
-      "checksum": "35b88b29f732699d6ab15faef3ba5457"
+      "checksum": "384b3b1286c618c81dec706c63c7e4c2"
     }
   },
   "users": null
