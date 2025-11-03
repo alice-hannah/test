@@ -27,7 +27,7 @@ url <-
   "http://statistics.gov.scot/downloads/file?id=ca23e4da-4aa2-49e7-96e2-38f227f9d0de%2FALL+NPF+INDICATORS+-+2024+-+statistics.gov.scot+NPF+database+excel+file+-+August+2024.xlsx"
 
 NPFdata <-
-  openxlsx::read.xlsx(url,
+  openxlsx::read.xlsx(URLdecode(url),
                       detectDates = TRUE,
                       na.strings=c("","NA")) %>%
   filter(Characteristic == "Age" & Outcome == "Poverty")
