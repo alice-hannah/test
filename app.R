@@ -36,17 +36,11 @@ f <-
 #                       na.strings=c("","NA")) %>%
 #   filter(Characteristic == "Age" & Outcome == "Poverty")
 
+g <-
+  "https://www.opendata.nhs.scot/dataset/4ace86c2-2c0f-4620-b544-932148c2c4d3/resource/530cb70a-f747-4b3b-b75a-06353ae78e8d/download/icd10-lookup.xlsx"
 
-# Download xlsx and read ----
-
-download.file(f,
-              "data.xlsx",
-              mode = "wb")
-
-NPFdata <-
-  readxl::read_xlsx("data.xlsx") %>%
-  filter(Characteristic == "Age" & Outcome == "Poverty")
-
+x <- 
+  openxlsx::read.xlsx(g)
 
 # Read csv from URL ----
 
@@ -61,7 +55,7 @@ ui <- fluidPage(
   
   titlePanel("Equality test"),
   
-  datatable(NPFdata)
+  datatable(x)
   
 )
 
